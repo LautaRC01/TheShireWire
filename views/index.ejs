@@ -1,0 +1,38 @@
+<%- include ("partials/header.ejs") %>
+
+
+
+<button id="openModalBtn" class="open-btn">Create New Post</button>
+
+
+
+<div id="modalOverlay" class="overlay hidden">
+    <div id="modal" class="modal card-anim">
+        <h2 class="modal-title">Create a New Post</h2>
+
+        <form action="/post" method="POST" class="modal-form">
+            <div class="input-group">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author" placeholder="Author's name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" placeholder="Post title" required>
+            </div>
+
+            <div class="input-group">
+                <label for="content">Content</label>
+                <textarea id="content" name="content" placeholder="Write your thoughts here, little hobbit..." maxlength="500" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Publish</button>
+        </form>
+
+        <button id="closeModalBtn" class="close-btn">Cancel</button>
+    </div>
+</div>
+
+
+
+<%- include ("partials/footer.ejs") %>

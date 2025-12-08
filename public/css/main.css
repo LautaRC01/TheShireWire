@@ -1,0 +1,812 @@
+/* ====================  L • R • C |  2 0 2 5  ==================== */
+
+
+
+/* ---------- FONTS ---------- */
+
+
+@font-face {
+    font-family: 'BLKCHCRY';
+    src: url('/fonts/BLKCHCRY.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MorrisRomanBlack';
+    src: url('/fonts/MorrisRomanBlack.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* ---------- GLOBAL STYLES ---------- */
+
+
+.no-underline {
+  text-decoration: none;
+}
+
+body {
+    font-family: MorrisRomanBlack;
+    margin: 0px;
+    padding-bottom: 60px;     /* Para que no se esconda el contenido atras del footer */
+    background-color: rgb(225, 218, 209);
+}
+
+.deleteButton {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: auto;
+    background: transparent;
+    color: rgb(0, 0, 0);
+    padding: 15px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    transition: background 0.2s, transform 0.2s;
+    z-index: 800;
+    font-family: MorrisRomanBlack;
+}
+
+.deleteButton:hover {
+    background: rgb(207, 30, 30);
+    transform: scale(1.05);
+}
+
+
+
+
+
+
+/* ---------- OVERLAY NEW POST ---------- */
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: opacity 0.25s ease-in-out;
+    font-family: MorrisRomanBlack;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
+
+
+/* ---------- MODAL NEW POST ---------- */
+
+
+.modal {
+    background: #ffffff;
+    padding: 25px;
+    width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+    animation: fadeIn 0.25s ease;
+    position: relative;
+}
+
+
+
+/* Animation */
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* ---------- TITLE ---------- */
+
+
+.modal-title {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+
+/* ---------- FORM ---------- */
+
+
+.modal-form .input-group {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-form label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #444;
+}
+
+.modal-form input,
+.modal-form textarea {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 15px;
+    transition: border 0.2s;
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus {
+    outline: none;
+    border-color: #528bff;
+}
+
+
+
+/* Textarea tamaño fijo */
+
+.modal-form textarea {
+    resize: none;
+    height: 115px;
+}
+
+
+
+/* ---------- BUTTONS ---------- */
+
+/* BOTON DE SUBMIT */
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: rgb(108, 75, 31);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: MorrisRomanBlack;
+}
+.submit-btn:hover {
+    background: rgb(173, 118, 46);
+}
+
+
+
+/* BOTON DE CERRAR */
+
+.close-btn {
+    margin-top: 12px;
+    width: 100%;
+    padding: 9px;
+    background: #aaa;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: MorrisRomanBlack;
+}
+.close-btn:hover {
+    background: #888;
+}
+
+
+
+/* BOTÓN DE ABRIR */
+
+.open-btn {
+    position: fixed;
+    bottom: 13px;
+    right: 25px;
+    background: rgb(225, 218, 209);
+    color: rgb(0, 0, 0);
+    padding: 15px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    transition: background 0.2s, transform 0.2s;
+    z-index: 1000;
+    font-family: MorrisRomanBlack;
+}
+.open-btn:hover {
+    background: rgb(240, 232, 222);
+    transform: scale(1.05);
+}
+
+
+
+
+
+
+
+/* =====  DELETE   MODAL   OVERLAY  ===== */
+
+
+.modal-delete {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(3px);
+  z-index: 999;
+}
+
+.modal-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* ===== CONTENIDO DEL MODAL ===== */
+
+
+.shire-modal {
+  background: rgba(255, 248, 235, 0.95);
+  border: 2px solid rgba(139, 113, 72, 0.45);
+  border-radius: 10px;
+  padding: 25px 20px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  animation: shirePop 0.35s ease;
+  font-family: MorrisRomanBlack;
+  animation-fill-mode: both;
+  /* Antes estaba acá el absolute + transform, ya no */
+}
+
+
+/* ----- Decoración rúnica arriba ----- */
+
+.shire-modal::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 6px;
+  background-image: url('/img/runes-divider.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+}
+
+
+/* ----- Decoración rúnica abajo ----- */
+
+.shire-modal::after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 6px;
+  background-image: url('/img/runes-divider.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.55;
+}
+
+
+/* ===== TITULO ===== */
+
+.shire-modal-title {
+  font-size: 22px;
+  color: #3c2917;
+  margin-bottom: 10px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+
+
+/* ===== TEXTO ===== */
+
+.shire-modal-text {
+  font-size: 15px;
+  color: #4a3621;
+  margin-bottom: 18px;
+}
+
+
+/* ===== BOTONES ===== */
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+
+/* ---- Botón cancelar ---- */
+
+.shire-btn-cancel {
+  background: #6b5a34;
+  color: #f4e7d2;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.shire-btn-cancel:hover {
+  background: #836f42;
+  transform: scale(1.05);
+}
+
+
+/* ---- Botón destruir ---- */
+
+.shire-btn-confirm {
+  background: #7b332f;
+  color: #f4e7d2;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.shire-btn-confirm:hover {
+  background: #9b3f39;
+  transform: scale(1.05);
+}
+
+
+/* ===== ANIMACIÓN ===== */
+
+@keyframes shirePop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
+
+
+/* ------------------------- */
+/*      SHIRE HEADER         */
+/* ------------------------- */
+
+
+/* CONTENEDOR */
+
+.shire-header {
+    width: 100%;
+    padding: 15px 0 10px 0;
+    background: linear-gradient(
+        rgba(108, 75, 31, 0.08),
+        rgba(108, 75, 31, 0.12)
+    );
+    border-bottom: 2px solid rgba(95, 65, 28, 0.3);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+}
+
+.shire-header-inner {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    padding: 0 10px;
+}
+
+
+/* TITLE */
+
+.shire-title {
+    font-family: BLKCHCRY;
+    font-size: 48px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    color: rgb(77, 44, 18);
+    text-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    animation: fadeDown 0.8s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* SUBTITLE */
+
+.shire-subtitle {
+    font-family: MorrisRomanBlack;
+    font-size: 16px;
+    color: rgb(70, 55, 40);
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    animation: fadeIn 1.4s ease forwards;
+    opacity: 0;
+}
+
+
+/* NAVIGATION */
+
+.shire-nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 12px;
+}
+
+.shire-nav li {
+    display: inline-block;
+    margin: 0 12px;
+}
+
+.shire-nav a {
+    font-family: MorrisRomanBlack;
+    font-size: 18px;
+    color: rgb(59, 36, 17);
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+
+/* Subtle hover glow */
+
+.shire-nav a:hover {
+    background: rgba(145, 114, 78, 0.2);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+
+/* Small underline animation */
+
+.shire-nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: rgb(108, 75, 31);
+    transition: width 0.25s ease;
+}
+
+.shire-nav a:hover::after {
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------- */
+/*      SHIRE FOOTER         */
+/* ------------------------- */
+
+
+.shire-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(88, 62, 29, 0.85),
+        rgba(58, 41, 20, 0.95)
+    );
+
+    padding: 2px 0; /* antes 25px */
+    color: #f3e9d2;
+    border-top: 2px solid rgba(255, 244, 229, 0.15);
+    backdrop-filter: blur(1px);
+    font-family: MorrisRomanBlack;
+    z-index: 999;
+}
+
+
+/* Línea decorativa rúnica */
+
+.shire-footer::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;            
+    height: 20px;            
+    background-image: url('/img/runes-divider.png');
+    background-size: 100% auto;   
+    background-repeat: no-repeat;
+    opacity: 0.9;
+}
+
+.footer-inner {
+    text-align: center;
+    animation: fadeFooter 0.6s ease;
+}
+
+.footer-title {
+    font-size: 16px; 
+    margin-bottom: 4px;
+    color: #f7f1df;
+}
+
+.footer-copy {
+    font-size: 12px; 
+    opacity: 0.9;
+}
+
+
+
+
+
+
+/*///////POSTS///////*/
+
+
+.posts-container {
+    width: 90%;
+    max-width: 850px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+.post {
+    position: relative;
+    background: rgba(255, 248, 235, 0.9); 
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(140, 120, 80, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    backdrop-filter: blur(1px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* Hover suave */
+
+.post:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+.postTitle {    
+    font-family: MorrisRomanBlack;
+    font-size: 24px;
+    color: #4a341f;
+    margin-bottom: 6px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+
+.author {
+    font-size: 14px;
+    color: #6b4e2e;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.content {
+    font-size: 17px;
+    line-height: 1.5;
+    color: #3a2c1b;
+    margin-bottom: 15px;
+}
+
+.deleteButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    background: #7b332f;
+    color: #f4e7d2;
+    border: none;
+    padding: 4px 6px;
+    border-radius: 6px;
+
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.deleteButton:hover {
+    background: #9b3f39;
+    transform: scale(1.05);
+}
+.postsHr {
+    border: none;
+    height: 1px;
+    background: rgba(120, 90, 50, 0.25);
+    margin-top: 18px;
+}
+.post {
+    background-image: url('/img/pergamino1.jpg'); /* si tenés una */
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+
+
+
+/* ---------- TRANSITIONS FOR THEME CHANGE ---------- */
+
+html, body {
+    transition: background-color 0.6s ease, color 0.6s ease, background 0.6s ease;
+}
+
+body, .posts-container, footer, .shire-footer {
+    transition: background 0.6s ease, color 0.6s ease, box-shadow 0.6s ease;
+}
+
+
+.theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1200;
+    display: flex;
+    gap: 10px;
+}
+
+.theme-btn {
+    width: 42px;
+    height: 42px;
+    background: rgba(255,255,255,0.65);
+    border: 2px solid rgba(0,0,0,0.25);
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, background 0.4s ease;
+}
+
+.theme-btn:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   TWILIGHT MODE — Bosque Élfico, Verdes Profundos + Dorado
+   ===================================================== */
+body.twilight {
+    background: linear-gradient(180deg, #1f2a21 0%, #0f1712 100%);
+    color: #e3e6d8;
+}
+
+/* “Cielo” animado */
+body.twilight::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    background: radial-gradient(circle at 50% 20%, rgba(200,180,120,0.25), rgba(20,30,20,0));
+    animation: twilightGlow 8s infinite alternate ease-in-out;
+    z-index: -1;
+}
+
+@keyframes twilightGlow {
+    0% { opacity: 0.4; transform: translateY(-10px); }
+    100% { opacity: 0.9; transform: translateY(10px); }
+}
+
+/* Posts */
+body.twilight .post-card, 
+body.twilight .posts-container {
+    background: rgba(40,55,40,0.75);
+    box-shadow: 0 0 24px rgba(0,0,0,0.5);
+    border: 1px solid rgba(200,170,90,0.25);
+}
+
+/* Modal */
+body.twilight .modal {
+    background: rgba(35,45,36,0.92);
+    border: 1px solid rgba(200,180,100,0.25);
+    color: #f0ead9;
+}
+
+/* Footer */
+body.twilight footer {
+    background: linear-gradient(180deg, #1a221b, #0e1510);
+    border-top: 1px solid rgba(200,170,90,0.15);
+    color: #dfdcc5;
+}
+
+
+/* =====================================================
+   NIGHT MODE — Azul Profundo + Dorados Suaves
+   ===================================================== */
+body.night {
+    background: linear-gradient(180deg, #02060b 0%, #0b1117 100%);
+    color: #d4dae0;
+}
+
+body.night::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    background: radial-gradient(circle at 40% 15%, rgba(150,180,255,0.18), rgba(10,10,20,0));
+    animation: nightPulse 10s infinite alternate ease-in-out;
+    z-index: -1;
+}
+
+@keyframes nightPulse {
+    0% { opacity: 0.4; }
+    100% { opacity: 0.9; }
+}
+
+body.night .posts-container {
+    background: rgba(20,26,33,0.78);
+    border: 1px solid rgba(140,110,50,0.2);
+}
+
+body.night .modal {
+    background: rgba(15,18,25,0.92);
+}
+
+body.night footer {
+    background: linear-gradient(180deg, #0a0f14, #06090c);
+    color: #cfc8b1;
+}
+
+
+
+
