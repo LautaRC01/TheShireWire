@@ -1,12 +1,52 @@
 /* ====================  L • R • C |  2 0 2 5  ==================== */
 
+
+
 document.addEventListener("DOMContentLoaded", () => {
+
+
+
 
 const textarea = document.getElementById("content");
 const newPostBtn = document.getElementById("openModalBtn");
 const closeButton = document.getElementById("closeModalBtn");
 const postsContainer = document.querySelector(".posts-container");
 const modalOverlay = document.getElementById("modalOverlay");
+
+
+
+
+//NEW POST MODAL//
+
+const openBtn = document.getElementById("openModalBtn");
+const overlay  = document.getElementById("modalOverlay");
+const closeBtn = document.getElementById("closeModalBtn");
+const modal = document.getElementById("modal");
+
+if (!openBtn || !overlay || !closeBtn) return;
+
+    
+  openBtn.addEventListener("click", () => {
+      overlay.classList.remove("hidden");
+  });
+
+    
+  closeBtn.addEventListener("click", () => {
+      overlay.classList.add("hidden");
+   });
+
+  // Cerrar al clickear fuera
+  overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) {
+          overlay.classList.add("hidden");
+      }
+    }
+);
+
+
+
+//DELETE FUNCTION//   
+
 
 if (postsContainer) {
   postsContainer.addEventListener("click", async (e) => {
@@ -38,6 +78,7 @@ if (postsContainer) {
   });
 }
 
+
 //DELETE CONFIRM MODAL//
 
 function customConfirm() {
@@ -62,75 +103,7 @@ function customConfirm() {
 }
 
 
-});
 
-//NEW POST MODAL//
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    const openBtn = document.getElementById("openModalBtn");
-    const overlay  = document.getElementById("modalOverlay");
-    const closeBtn = document.getElementById("closeModalBtn");
-    const modal = document.getElementById("modal");
-
-    if (!openBtn || !overlay || !closeBtn) return;
-
-    
-    openBtn.addEventListener("click", () => {
-        overlay.classList.remove("hidden");
-    });
-
-    
-    closeBtn.addEventListener("click", () => {
-        overlay.classList.add("hidden");
-    });
-
-    // Cerrar al clickear fuera
-    overlay.addEventListener("click", (e) => {
-        if (e.target === overlay) {
-            overlay.classList.add("hidden");
-        }
-    });
 
 });
-
-
-
-
-
-
-// ===============================
-// THEME MANAGER
-// ===============================
-
-// Aplicar tema guardado al cargar
-document.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("theme");
-
-    if (savedTheme) {
-        document.body.classList.add(savedTheme);
-    }
-
-    // Botones
-    const dayBtn = document.getElementById("themeDay");
-    const twiBtn = document.getElementById("themeTwilight");
-    const nightBtn = document.getElementById("themeNight");
-
-    const setTheme = (theme) => {
-        // Limpia todo
-        document.body.classList.remove("day", "twilight", "night");
-
-        if (theme !== "day") {
-            document.body.classList.add(theme);
-        }
-
-        localStorage.setItem("theme", theme);
-    };
-
-    dayBtn.onclick = () => setTheme("day");
-    twiBtn.onclick = () => setTheme("twilight");
-    nightBtn.onclick = () => setTheme("night");
-});
-
-
-
