@@ -103,6 +103,32 @@ function customConfirm() {
 }
 
 
+//THEME SWITCHER//
+
+
+const toggleBtn = document.getElementById("theme-toggle");
+const icon = toggleBtn.querySelector(".theme-icon");
+const html = document.documentElement; // importante, NO body
+
+// Aplicar modo guardado previamente
+const savedTheme = localStorage.getItem("themeMode");
+if (savedTheme === "dark") {
+    html.classList.add("darkMode");
+    icon.textContent = "🌙";
+}
+
+toggleBtn.addEventListener("click", () => {
+    html.classList.toggle("darkMode");
+
+    const isDark = html.classList.contains("darkMode");
+
+    icon.textContent = isDark ? "☀️" : "🌙";
+
+    localStorage.setItem("themeMode", isDark ? "dark" : "light");
+});
+
+
+
 
 
 

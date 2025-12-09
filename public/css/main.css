@@ -1,9 +1,108 @@
-/* ====================  L • R • C |  2 0 2 5  ==================== */
+/* ==================== L • R • C | 2 0 2 5 ==================== */
 
 
+/* ========== VARIABLES ========== */
 
-/* ---------- FONTS ---------- */
+:root {
+    /* Base pergamino claro */
+    --clr-bg: rgb(225, 218, 209);
+    --clr-bg-light: #fff8eb;
+    --clr-bg-modal: #ffffff;
+    --clr-bg-perg: rgba(255, 248, 235, 0.9);
 
+    /* Tintas y textos */
+    --clr-text: #3a2c1b;
+    --clr-text-dark: #4a341f;
+    --clr-text-soft: #6b4e2e;
+    --clr-text-light: #f4e7d2;
+
+    /* Bordes y efectos */
+    --clr-border-soft: rgba(140, 120, 80, 0.4);
+    --clr-border-strong: rgba(95, 65, 28, 0.3);
+    --clr-shadow: rgba(0,0,0,0.25);
+
+    /* Botones y acentos */
+    --clr-accent: rgb(108, 75, 31);
+    --clr-accent-hover: rgb(173, 118, 46);
+    --clr-accent-light: rgba(145, 114, 78, 0.2);
+    --clr-danger: #7b332f;
+    --clr-danger-hover: #9b3f39;
+    --clr-cancel: #6b5a34;
+    --clr-cancel-hover: #836f42;
+
+    /* Header + nav */
+    --clr-header-grad-top: rgba(108, 75, 31, 0.08);
+    --clr-header-grad-bottom: rgba(108, 75, 31, 0.12);
+    --clr-header-title: rgb(77, 44, 18);
+    --clr-nav-link: rgb(59, 36, 17);
+    --clr-nav-hover-bg: rgba(145, 114, 78, 0.2);
+    --clr-nav-underline: rgb(108, 75, 31);
+
+    /* Footer */
+    --clr-footer-grad-top: rgba(88, 62, 29, 0.85);
+    --clr-footer-grad-bottom: rgba(58, 41, 20, 0.95);
+    --clr-footer-text: #f3e9d2;
+    --clr-footer-border: rgba(255, 244, 229, 0.15);
+
+    /* Overlays */
+    --clr-overlay: rgba(0,0,0,0.45);
+    --clr-overlay-strong: rgba(0,0,0,0.65);
+
+    /* Form inputs */
+    --clr-input-border: #ccc;
+    --clr-input-focus: #528bff;
+
+    /* Buttons globals */
+    --clr-btn-text: #ffffff;
+}
+
+/* ========== DARK MODE ==========
+   estético, pergamino quemado + tonos nocturnos */
+.darkMode {
+    --clr-bg: #1d1a16;
+    --clr-bg-light: #2b2620;
+    --clr-bg-modal: #2f2922;
+    --clr-bg-perg: rgba(48, 42, 35, 0.9);
+
+    --clr-text: #e8dcc2;
+    --clr-text-dark: #f3e7cf;
+    --clr-text-soft: #c7b08a;
+    --clr-text-light: #f5e9d5;
+
+    --clr-border-soft: rgba(200, 180, 150, 0.25);
+    --clr-border-strong: rgba(210, 190, 160, 0.2);
+    --clr-shadow: rgba(0,0,0,0.55);
+
+    --clr-accent: #b99353;
+    --clr-accent-hover: #d8b473;
+    --clr-accent-light: rgba(200, 170, 110, 0.2);
+    --clr-danger: #a54b47;
+    --clr-danger-hover: #c65d57;
+    --clr-cancel: #8d7a50;
+    --clr-cancel-hover: #a08a5a;
+
+    --clr-header-grad-top: rgba(180, 140, 90, 0.08);
+    --clr-header-grad-bottom: rgba(180, 140, 90, 0.18);
+    --clr-header-title: #d4b47b;
+    --clr-nav-link: #d1b991;
+    --clr-nav-hover-bg: rgba(220, 190, 150, 0.15);
+    --clr-nav-underline: #b99353;
+
+    --clr-footer-grad-top: rgba(40, 32, 25, 0.95);
+    --clr-footer-grad-bottom: rgba(28, 23, 19, 0.97);
+    --clr-footer-text: #e8dcc2;
+    --clr-footer-border: rgba(180, 160, 120, 0.15);
+
+    --clr-overlay: rgba(0,0,0,0.6);
+    --clr-overlay-strong: rgba(0,0,0,0.8);
+
+    --clr-input-border: #7a6a53;
+    --clr-input-focus: #deb76d;
+}
+
+/* ------------------------------------------------------------ */
+/*                         FONTS                                */
+/* ------------------------------------------------------------ */
 
 @font-face {
     font-family: 'BLKCHCRY';
@@ -11,6 +110,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'MorrisRomanBlack';
     src: url('/fonts/MorrisRomanBlack.ttf') format('truetype');
@@ -18,51 +118,48 @@
     font-style: normal;
 }
 
+/* ------------------------------------------------------------ */
+/*                        GLOBAL                                */
+/* ------------------------------------------------------------ */
 
-/* ---------- GLOBAL STYLES ---------- */
-
-
-.no-underline {
-  text-decoration: none;
-}
+.no-underline { text-decoration: none; }
 
 body {
     font-family: MorrisRomanBlack;
-    margin: 0px;
-    padding-bottom: 60px;     /* Para que no se esconda el contenido atras del footer */
-    background-color: rgb(225, 218, 209);
+    margin: 0;
+    padding-bottom: 60px;
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
 }
+
+/* ------------------------------------------------------------ */
+/*                     DELETE BUTTON (POST)                     */
+/* ------------------------------------------------------------ */
 
 .deleteButton {
     position: absolute;
-    bottom: 10px;
+    top: 10px;
     right: 10px;
-    width: auto;
-    background: transparent;
-    color: rgb(0, 0, 0);
-    padding: 15px 20px;
-    border-radius: 40px;
-    cursor: pointer;
+    background: var(--clr-danger);
+    color: var(--clr-text-light);
     border: none;
-    font-size: 14px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-    transition: background 0.2s, transform 0.2s;
-    z-index: 800;
+    padding: 4px 6px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
     font-family: MorrisRomanBlack;
+    box-shadow: 0 4px 15px var(--clr-shadow);
 }
 
 .deleteButton:hover {
-    background: rgb(207, 30, 30);
+    background: var(--clr-danger-hover);
     transform: scale(1.05);
 }
 
-
-
-
-
-
-/* ---------- OVERLAY NEW POST ---------- */
-
+/* ------------------------------------------------------------ */
+/*                       OVERLAY NEW POST                       */
+/* ------------------------------------------------------------ */
 
 .overlay {
     position: fixed;
@@ -70,7 +167,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.45);
+    background: var(--clr-overlay);
     backdrop-filter: blur(2px);
     display: flex;
     align-items: center;
@@ -80,60 +177,38 @@ body {
     font-family: MorrisRomanBlack;
 }
 
-.hidden {
-    display: none;
-}
+.hidden { display: none; }
 
-
-
-
-
-
-/* ---------- MODAL NEW POST ---------- */
-
+/* ------------------------------------------------------------ */
+/*                         MODAL NEW POST                       */
+/* ------------------------------------------------------------ */
 
 .modal {
-    background: #ffffff;
+    background: var(--clr-bg-modal);
     padding: 25px;
     width: 400px;
     border-radius: 12px;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 25px var(--clr-shadow);
     animation: fadeIn 0.25s ease;
     position: relative;
 }
 
-
-
-/* Animation */
-
-
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-
-
-/* ---------- TITLE ---------- */
-
+/* ------------------------------------------------------------ */
+/*                     MODAL TITLE + FORM                       */
+/* ------------------------------------------------------------ */
 
 .modal-title {
     margin-bottom: 15px;
     text-align: center;
     font-size: 22px;
     font-weight: bold;
+    color: var(--clr-text-dark);
 }
-
-
-
-/* ---------- FORM ---------- */
-
 
 .modal-form .input-group {
     margin-bottom: 16px;
@@ -144,45 +219,42 @@ body {
 .modal-form label {
     margin-bottom: 5px;
     font-size: 14px;
-    color: #444;
+    color: var(--clr-text-soft);
 }
 
 .modal-form input,
 .modal-form textarea {
-    border: 1px solid #ccc;
+    border: 1px solid var(--clr-input-border);
     border-radius: 6px;
     padding: 10px;
     font-size: 15px;
+    background: var(--clr-bg);
+    color: var(--clr-text);
     transition: border 0.2s;
 }
 
 .modal-form input:focus,
 .modal-form textarea:focus {
     outline: none;
-    border-color: #528bff;
+    border-color: var(--clr-input-focus);
 }
 
-
-
-/* Textarea tamaño fijo */
-
+/* Fijo */
 .modal-form textarea {
     resize: none;
     height: 115px;
 }
 
-
-
-/* ---------- BUTTONS ---------- */
-
-/* BOTON DE SUBMIT */
+/* ------------------------------------------------------------ */
+/*                          BUTTONS                             */
+/* ------------------------------------------------------------ */
 
 .submit-btn {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
-    background: rgb(108, 75, 31);
-    color: white;
+    background: var(--clr-accent);
+    color: var(--clr-btn-text);
     font-size: 16px;
     border: none;
     border-radius: 6px;
@@ -190,13 +262,10 @@ body {
     transition: background 0.2s;
     font-family: MorrisRomanBlack;
 }
+
 .submit-btn:hover {
-    background: rgb(173, 118, 46);
+    background: var(--clr-accent-hover);
 }
-
-
-
-/* BOTON DE CERRAR */
 
 .close-btn {
     margin-top: 12px;
@@ -211,218 +280,164 @@ body {
     transition: background 0.2s;
     font-family: MorrisRomanBlack;
 }
+
 .close-btn:hover {
     background: #888;
 }
-
-
-
-/* BOTÓN DE ABRIR */
 
 .open-btn {
     position: fixed;
     bottom: 13px;
     right: 25px;
-    background: rgb(225, 218, 209);
-    color: rgb(0, 0, 0);
+    background: var(--clr-bg);
+    color: var(--clr-text);
     padding: 15px 20px;
     border-radius: 40px;
     cursor: pointer;
     border: none;
     font-size: 16px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 15px var(--clr-shadow);
     transition: background 0.2s, transform 0.2s;
     z-index: 1000;
     font-family: MorrisRomanBlack;
 }
+
 .open-btn:hover {
-    background: rgb(240, 232, 222);
+    background: var(--clr-bg-light);
     transform: scale(1.05);
 }
 
-
-
-
-
-
-
-/* =====  DELETE   MODAL   OVERLAY  ===== */
-
+/* ------------------------------------------------------------ */
+/*                      DELETE MODAL                             */
+/* ------------------------------------------------------------ */
 
 .modal-delete {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(3px);
-  z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--clr-overlay-strong);
+    backdrop-filter: blur(3px);
+    z-index: 999;
 }
 
 .modal-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-
-
-/* ===== CONTENIDO DEL MODAL ===== */
-
 
 .shire-modal {
-  background: rgba(255, 248, 235, 0.95);
-  border: 2px solid rgba(139, 113, 72, 0.45);
-  border-radius: 10px;
-  padding: 25px 20px;
-  width: 320px;
-  text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-  animation: shirePop 0.35s ease;
-  font-family: MorrisRomanBlack;
-  animation-fill-mode: both;
-  /* Antes estaba acá el absolute + transform, ya no */
+    background: var(--clr-bg-perg);
+    border: 2px solid var(--clr-border-soft);
+    border-radius: 10px;
+    padding: 25px 20px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 6px 18px var(--clr-shadow);
+    animation: shirePop 0.35s ease;
+    font-family: MorrisRomanBlack;
+    position: relative;
 }
-
-
-/* ----- Decoración rúnica arriba ----- */
 
 .shire-modal::before {
-  content: "";
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 160px;
-  height: 6px;
-  background-image: url('/img/runes-divider.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.9;
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 6px;
+    background-image: url('/img/runes-divider.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.9;
 }
-
-
-/* ----- Decoración rúnica abajo ----- */
 
 .shire-modal::after {
-  content: "";
-  position: absolute;
-  bottom: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 150px;
-  height: 6px;
-  background-image: url('/img/runes-divider.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.55;
+    content: "";
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 6px;
+    background-image: url('/img/runes-divider.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.55;
 }
-
-
-/* ===== TITULO ===== */
 
 .shire-modal-title {
-  font-size: 22px;
-  color: #3c2917;
-  margin-bottom: 10px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    font-size: 22px;
+    color: var(--clr-text-dark);
+    margin-bottom: 10px;
+    text-shadow: 0 1px 3px var(--clr-shadow);
 }
-
-
-/* ===== TEXTO ===== */
 
 .shire-modal-text {
-  font-size: 15px;
-  color: #4a3621;
-  margin-bottom: 18px;
+    font-size: 15px;
+    color: var(--clr-text);
+    margin-bottom: 18px;
 }
-
-
-/* ===== BOTONES ===== */
 
 .buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
-
-/* ---- Botón cancelar ---- */
-
 .shire-btn-cancel {
-  background: #6b5a34;
-  color: #f4e7d2;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-
-  transition: background 0.2s ease, transform 0.15s ease;
+    background: var(--clr-cancel);
+    color: var(--clr-text-light);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .shire-btn-cancel:hover {
-  background: #836f42;
-  transform: scale(1.05);
+    background: var(--clr-cancel-hover);
+    transform: scale(1.05);
 }
 
-
-/* ---- Botón destruir ---- */
-
 .shire-btn-confirm {
-  background: #7b332f;
-  color: #f4e7d2;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-
-  transition: background 0.2s ease, transform 0.15s ease;
+    background: var(--clr-danger);
+    color: var(--clr-text-light);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .shire-btn-confirm:hover {
-  background: #9b3f39;
-  transform: scale(1.05);
+    background: var(--clr-danger-hover);
+    transform: scale(1.05);
 }
-
-
-/* ===== ANIMACIÓN ===== */
 
 @keyframes shirePop {
-  from {
-    opacity: 0;
-    transform: scale(0.85);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+    from { opacity: 0; transform: scale(0.85); }
+    to   { opacity: 1; transform: scale(1); }
 }
 
-
-
-
-
-
-
-
-/* ------------------------- */
-/*      SHIRE HEADER         */
-/* ------------------------- */
-
-
-/* CONTENEDOR */
+/* ------------------------------------------------------------ */
+/*                           HEADER                              */
+/* ------------------------------------------------------------ */
 
 .shire-header {
     width: 100%;
     padding: 15px 0 10px 0;
     background: linear-gradient(
-        rgba(108, 75, 31, 0.08),
-        rgba(108, 75, 31, 0.12)
+        var(--clr-header-grad-top),
+        var(--clr-header-grad-bottom)
     );
-    border-bottom: 2px solid rgba(95, 65, 28, 0.3);
+    border-bottom: 2px solid var(--clr-border-strong);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
 }
 
@@ -433,47 +448,32 @@ body {
     padding: 0 10px;
 }
 
-
-/* TITLE */
-
 .shire-title {
     font-family: BLKCHCRY;
     font-size: 48px;
     letter-spacing: 2px;
     margin-bottom: 8px;
-    color: rgb(77, 44, 18);
-    text-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    color: var(--clr-header-title);
+    text-shadow: 0 3px 10px var(--clr-shadow);
     animation: fadeDown 0.8s ease forwards;
     opacity: 0;
 }
 
 @keyframes fadeDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
-
-
-/* SUBTITLE */
 
 .shire-subtitle {
     font-family: MorrisRomanBlack;
     font-size: 16px;
-    color: rgb(70, 55, 40);
+    color: var(--clr-text-soft);
     opacity: 0.85;
     max-width: 600px;
     margin: 0 auto 20px auto;
     animation: fadeIn 1.4s ease forwards;
     opacity: 0;
 }
-
-
-/* NAVIGATION */
 
 .shire-nav ul {
     list-style: none;
@@ -489,24 +489,18 @@ body {
 .shire-nav a {
     font-family: MorrisRomanBlack;
     font-size: 18px;
-    color: rgb(59, 36, 17);
+    color: var(--clr-nav-link);
     padding: 8px 12px;
     border-radius: 4px;
     transition: all 0.25s ease;
     position: relative;
 }
 
-
-/* Subtle hover glow */
-
 .shire-nav a:hover {
-    background: rgba(145, 114, 78, 0.2);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    background: var(--clr-nav-hover-bg);
+    box-shadow: 0 3px 10px var(--clr-shadow);
     transform: translateY(-2px);
 }
-
-
-/* Small underline animation */
 
 .shire-nav a::after {
     content: "";
@@ -515,7 +509,7 @@ body {
     left: 0;
     width: 0%;
     height: 2px;
-    background: rgb(108, 75, 31);
+    background: var(--clr-nav-underline);
     transition: width 0.25s ease;
 }
 
@@ -523,56 +517,26 @@ body {
     width: 100%;
 }
 
-
-
-
-
-
-
-
-
-
-
-/* ------------------------- */
-/*      SHIRE FOOTER         */
-/* ------------------------- */
-
+/* ------------------------------------------------------------ */
+/*                           FOOTER                              */
+/* ------------------------------------------------------------ */
 
 .shire-footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-
     background: linear-gradient(
         to bottom,
-        rgba(88, 62, 29, 0.85),
-        rgba(58, 41, 20, 0.95)
+        var(--clr-footer-grad-top),
+        var(--clr-footer-grad-bottom)
     );
-
-    padding: 2px 0; /* antes 25px */
-    color: #f3e9d2;
-    border-top: 2px solid rgba(255, 244, 229, 0.15);
+    padding: 2px 0;
+    color: var(--clr-footer-text);
+    border-top: 2px solid var(--clr-footer-border);
     backdrop-filter: blur(1px);
     font-family: MorrisRomanBlack;
     z-index: 999;
-}
-
-
-/* Línea decorativa rúnica */
-
-.shire-footer::before {
-    content: "";
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 240px;            
-    height: 20px;            
-    background-image: url('/img/runes-divider.png');
-    background-size: 100% auto;   
-    background-repeat: no-repeat;
-    opacity: 0.9;
 }
 
 .footer-inner {
@@ -581,23 +545,19 @@ body {
 }
 
 .footer-title {
-    font-size: 16px; 
+    font-size: 16px;
     margin-bottom: 4px;
-    color: #f7f1df;
+    color: var(--clr-footer-text);
 }
 
 .footer-copy {
-    font-size: 12px; 
+    font-size: 12px;
     opacity: 0.9;
 }
 
-
-
-
-
-
-/*///////POSTS///////*/
-
+/* ------------------------------------------------------------ */
+/*                          POSTS                               */
+/* ------------------------------------------------------------ */
 
 .posts-container {
     width: 90%;
@@ -605,37 +565,38 @@ body {
     margin: 0 auto;
     margin-top: 40px;
 }
+
 .post {
     position: relative;
-    background: rgba(255, 248, 235, 0.9); 
+    background: var(--clr-bg-perg);
     padding: 10px 14px;
     margin-bottom: 20px;
-    border: 1px solid rgba(140, 120, 80, 0.4);
+    border: 1px solid var(--clr-border-soft);
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 10px var(--clr-shadow);
     backdrop-filter: blur(1px);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-image: url('/img/pergamino1.jpg');
+    background-size: cover;
+    background-blend-mode: multiply;
 }
-
-
-/* Hover suave */
 
 .post:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+    box-shadow: 0 6px 14px var(--clr-shadow);
 }
 
-.postTitle {    
+.postTitle {
     font-family: MorrisRomanBlack;
     font-size: 24px;
-    color: #4a341f;
+    color: var(--clr-text-dark);
     margin-bottom: 6px;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    text-shadow: 0 1px 2px var(--clr-shadow);
 }
 
 .author {
     font-size: 14px;
-    color: #6b4e2e;
+    color: var(--clr-text-soft);
     margin-bottom: 10px;
     opacity: 0.8;
 }
@@ -643,45 +604,101 @@ body {
 .content {
     font-size: 17px;
     line-height: 1.5;
-    color: #3a2c1b;
+    color: var(--clr-text);
     margin-bottom: 15px;
 }
 
-.deleteButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-
-    background: #7b332f;
-    color: #f4e7d2;
-    border: none;
-    padding: 4px 6px;
-    border-radius: 6px;
-
-    font-size: 13px;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.1s ease;
-}
-
-.deleteButton:hover {
-    background: #9b3f39;
-    transform: scale(1.05);
-}
 .postsHr {
     border: none;
     height: 1px;
     background: rgba(120, 90, 50, 0.25);
     margin-top: 18px;
 }
-.post {
-    background-image: url('/img/pergamino1.jpg'); /* si tenés una */
-    background-size: cover;
-    background-blend-mode: multiply;
+
+/* ------------------------------------------------------------ */
+/*                    THEME SWITCHER BUTTON                     */
+/* ------------------------------------------------------------ */
+
+.theme-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--btn-bg);
+    color: var(--btn-fg);
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    z-index: 9999;
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.05);
+}
+
+.theme-toggle-btn:active {
+    transform: scale(0.97);
+}
+
+.theme-icon {
+    pointer-events: none;
+}
+
+
+
+/* ------------------------------------------------------------ */
+/*                         DIVIDERS                             */
+/* ------------------------------------------------------------ */
+
+
+.elven-divider-top {
+    
+    position: fixed;     
+    top: 190px;
+    clear: both;            
+    z-index: 1;  
+    width: 100%;
+    height: 28px; 
+    background-image: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' width='300' height='28' viewBox='0 0 300 28' fill='none'>\<path d='M0 14 H110' stroke='%234b3e1e' stroke-width='2'/>\<path d='M190 14 H300' stroke='%234b3e1e' stroke-width='2'/>\<path d='M150 2 C138 10 138 18 150 26 C162 18 162 10 150 2 Z' stroke='%234b3e1e' stroke-width='2' fill='none'/>\<path d='M150 6 C144 11 144 17 150 22 C156 17 156 11 150 6 Z' stroke='%234b3e1e' stroke-width='1.5' fill='none'/>\</svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 250px auto;
+    margin: 20px auto 20px auto;
+    opacity: 0.85;
+}
+
+.elven-divider-bottom {
+    
+    position: fixed;     
+    bottom: 60px;
+    clear: both;            
+    z-index: 1;  
+    width: 100%;
+    height: 28px; 
+    background-image: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' width='300' height='28' viewBox='0 0 300 28' fill='none'>\<path d='M0 14 H110' stroke='%234b3e1e' stroke-width='2'/>\<path d='M190 14 H300' stroke='%234b3e1e' stroke-width='2'/>\<path d='M150 2 C138 10 138 18 150 26 C162 18 162 10 150 2 Z' stroke='%234b3e1e' stroke-width='2' fill='none'/>\<path d='M150 6 C144 11 144 17 150 22 C156 17 156 11 150 6 Z' stroke='%234b3e1e' stroke-width='1.5' fill='none'/>\</svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 250px auto;
+    margin: 20px auto 20px auto;
+    opacity: 0.85;
+}
+
+html.darkMode .elven-divider-top {
+    background-image: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' width='300' height='28' viewBox='0 0 300 28' fill='none'>\<path d='M0 14 H110' stroke='%23c8b27a' stroke-width='2'/>\<path d='M190 14 H300' stroke='%23c8b27a' stroke-width='2'/>\<path d='M150 2 C138 10 138 18 150 26 C162 18 162 10 150 2 Z' stroke='%23c8b27a' stroke-width='2' fill='none'/>\<path d='M150 6 C144 11 144 17 150 22 C156 17 156 11 150 6 Z' stroke='%23c8b27a' stroke-width='1.5' fill='none'/>\</svg>");
+}
+
+html.darkMode .elven-divider-bottom {
+    background-image: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' width='300' height='28' viewBox='0 0 300 28' fill='none'>\<path d='M0 14 H110' stroke='%23c8b27a' stroke-width='2'/>\<path d='M190 14 H300' stroke='%23c8b27a' stroke-width='2'/>\<path d='M150 2 C138 10 138 18 150 26 C162 18 162 10 150 2 Z' stroke='%23c8b27a' stroke-width='2' fill='none'/>\<path d='M150 6 C144 11 144 17 150 22 C156 17 156 11 150 6 Z' stroke='%23c8b27a' stroke-width='1.5' fill='none'/>\</svg>");
 }
 
 
 
 
+/*background-image-dark: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' width='300' height='28' viewBox='0 0 300 28' fill='none'>\<path d='M0 14 H110' stroke='%234b3e1e' stroke-width='2'/>\<path d='M190 14 H300' stroke='%234b3e1e' stroke-width='2'/>\<path d='M150 2 C138 10 138 18 150 26 C162 18 162 10 150 2 Z' stroke='%234b3e1e' stroke-width='2' fill='none'/>\<path d='M150 6 C144 11 144 17 150 22 C156 17 156 11 150 6 Z' stroke='%234b3e1e' stroke-width='1.5' fill='none'/>\</svg>");
+background-image-light: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' width='300' height='28' viewBox='0 0 300 28' fill='none'>\<path d='M0 14 H110' stroke='%23c8b27a' stroke-width='2'/>\<path d='M190 14 H300' stroke='%23c8b27a' stroke-width='2'/>\<path d='M150 2 C138 10 138 18 150 26 C162 18 162 10 150 2 Z' stroke='%23c8b27a' stroke-width='2' fill='none'/>\<path d='M150 6 C144 11 144 17 150 22 C156 17 156 11 150 6 Z' stroke='%23c8b27a' stroke-width='1.5' fill='none'/>\</svg>");
 
 
 
