@@ -114,7 +114,7 @@ const html = document.documentElement; // importante, NO body
 const savedTheme = localStorage.getItem("themeMode");
 if (savedTheme === "dark") {
     html.classList.add("darkMode");
-    icon.textContent = "🌙";
+    icon.textContent = "☀️";
 }
 
 toggleBtn.addEventListener("click", () => {
@@ -130,41 +130,56 @@ toggleBtn.addEventListener("click", () => {
 
 
 //VINES&PARTICLES//
+
 setInterval(() => {
     if (Math.random() < 0.6) createLeaf();  // probabilidad moderada
 }, 2000); // cada 3s revisa si lanza o no una hoja
 
 
+const leafImages = [
+    "/img/particle-leaf1.png",
+    "/img/particle-leaf2.png",
+    "/img/particle-leaf3.png",
+    "/img/particle-leaf4.png"
+];
+
 function createLeaf() {
     const leaf = document.createElement("img");
-    leaf.src = "/img/particle-leaf1.png";
+    leaf.src = leafImages[Math.floor(Math.random() * leafImages.length)];
     leaf.classList.add("falling-leaf");
 
-    // POSICIÓN ALEATORIA EN EL ALTO DEL VIEWPORT
-    const startY = Math.random() * window.innerHeight * 0.8 + "px";
+    // tamaño aleatorio
+    const size = Math.random() * 12 + 20; // entre 20 y 32px
+    leaf.style.width = size + "px";
 
-    // LATERAL (izquierda o derecha)
+    // Aparecen SOLO en los costados
     if (Math.random() < 0.5) {
-        leaf.style.left = Math.random() * 120 + "px";  // cerca de la vine izquierda
+    // Lado izquierdo (ajustá 0–10vw a gusto)
+    leaf.style.left = (Math.random() * 20) + "vw";
     } else {
-        leaf.style.right = Math.random() * 120 + "px"; // cerca de la vine derecha
+    // Lado derecho (ajustá 90–100vw a gusto)
+    leaf.style.left = (80 + Math.random() * 10) + "vw";
     }
 
-    // INICIO
-    leaf.style.top = startY;
-    
-    // VELOCIDAD LENTA
-    const duration = Math.random() * 6 + 10; // 10–16 segundos
-    leaf.style.animationDuration = duration + "s";
+    // altura inicial (ACA AJUSTÁS para que NO salgan desde el header)
+    leaf.style.top = (200 + Math.random() * 100) + "px";
 
-    // muy poca rotación
-    const rot = Math.random() * 15 - 7;
-    leaf.style.transform = `rotate(${rot}deg)`;
+    // rotación inicial custom property
+    const rot = Math.floor(Math.random() * 360) + "deg";
+    leaf.style.setProperty("--rot-start", rot);
+
+    // duración de la caída
+    const duration = Math.random() * 6 + 8; // 8–14s
+    leaf.style.animationDuration = duration + "s";
 
     document.body.appendChild(leaf);
 
     setTimeout(() => leaf.remove(), duration * 1000);
-}
+    }
+
+    // INTERVALO DE PARTICULAS.. AJUSTAR A GUSTO
+    setInterval(createLeaf, 800 + Math.random() * 1600);
+
 
 
 

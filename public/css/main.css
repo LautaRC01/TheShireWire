@@ -747,26 +747,37 @@ html.darkMode .elven-divider-bottom {
 .falling-leaf {
     position: fixed;
     width: 26px;
-    height: 26px;
+    height: auto;
     pointer-events: none;
     z-index: 5;
-    opacity: 0.7;
-    animation: leaf-float linear forwards;
-    top: 200px;
+    opacity: 0.85;
+    animation: leaf-fall linear forwards;
+    will-change: transform;
 }
 
-@keyframes leaf-float {
+/* caída con leve zig-zag */
+@keyframes leaf-fall {
     0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.8;
+        transform: translateX(0px) translateY(0px) rotate(var(--rot-start));
+    }
+    25% {
+        transform: translateX(-20px) translateY(25vh) rotate(calc(var(--rot-start) + 90deg));
+    }
+    50% {
+        transform: translateX(20px) translateY(50vh) rotate(calc(var(--rot-start) + 180deg));
+    }
+    75% {
+        transform: translateX(-15px) translateY(75vh) rotate(calc(var(--rot-start) + 270deg));
     }
     100% {
-        transform: translateY(200px) rotate(25deg);
+        transform: translateX(15px) translateY(100vh) rotate(calc(var(--rot-start) + 360deg));
         opacity: 0;
     }
 }
 
-
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge moderno */
+}
 
 
 
