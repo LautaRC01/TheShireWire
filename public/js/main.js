@@ -129,6 +129,46 @@ toggleBtn.addEventListener("click", () => {
 
 
 
+//VINES&PARTICLES//
+setInterval(() => {
+    if (Math.random() < 0.6) createLeaf();  // probabilidad moderada
+}, 2000); // cada 3s revisa si lanza o no una hoja
+
+
+function createLeaf() {
+    const leaf = document.createElement("img");
+    leaf.src = "/img/particle-leaf1.png";
+    leaf.classList.add("falling-leaf");
+
+    // POSICIÓN ALEATORIA EN EL ALTO DEL VIEWPORT
+    const startY = Math.random() * window.innerHeight * 0.8 + "px";
+
+    // LATERAL (izquierda o derecha)
+    if (Math.random() < 0.5) {
+        leaf.style.left = Math.random() * 120 + "px";  // cerca de la vine izquierda
+    } else {
+        leaf.style.right = Math.random() * 120 + "px"; // cerca de la vine derecha
+    }
+
+    // INICIO
+    leaf.style.top = startY;
+    
+    // VELOCIDAD LENTA
+    const duration = Math.random() * 6 + 10; // 10–16 segundos
+    leaf.style.animationDuration = duration + "s";
+
+    // muy poca rotación
+    const rot = Math.random() * 15 - 7;
+    leaf.style.transform = `rotate(${rot}deg)`;
+
+    document.body.appendChild(leaf);
+
+    setTimeout(() => leaf.remove(), duration * 1000);
+}
+
+
+
+
 
 
 

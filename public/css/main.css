@@ -56,8 +56,8 @@
     --clr-btn-text: #ffffff;
 }
 
-/* ========== DARK MODE ==========
-   estético, pergamino quemado + tonos nocturnos */
+/* ========== DARK MODE ========== */
+   
 .darkMode {
     --clr-bg: #1d1a16;
     --clr-bg-light: #2b2620;
@@ -130,6 +130,10 @@ body {
     padding-bottom: 60px;
     background-color: var(--clr-bg);
     color: var(--clr-text);
+}
+
+html, body {
+    overflow-x: hidden;
 }
 
 /* ------------------------------------------------------------ */
@@ -697,8 +701,72 @@ html.darkMode .elven-divider-bottom {
 
 
 
-/*background-image-dark: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' width='300' height='28' viewBox='0 0 300 28' fill='none'>\<path d='M0 14 H110' stroke='%234b3e1e' stroke-width='2'/>\<path d='M190 14 H300' stroke='%234b3e1e' stroke-width='2'/>\<path d='M150 2 C138 10 138 18 150 26 C162 18 162 10 150 2 Z' stroke='%234b3e1e' stroke-width='2' fill='none'/>\<path d='M150 6 C144 11 144 17 150 22 C156 17 156 11 150 6 Z' stroke='%234b3e1e' stroke-width='1.5' fill='none'/>\</svg>");
-background-image-light: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' width='300' height='28' viewBox='0 0 300 28' fill='none'>\<path d='M0 14 H110' stroke='%23c8b27a' stroke-width='2'/>\<path d='M190 14 H300' stroke='%23c8b27a' stroke-width='2'/>\<path d='M150 2 C138 10 138 18 150 26 C162 18 162 10 150 2 Z' stroke='%23c8b27a' stroke-width='2' fill='none'/>\<path d='M150 6 C144 11 144 17 150 22 C156 17 156 11 150 6 Z' stroke='%23c8b27a' stroke-width='1.5' fill='none'/>\</svg>");
+
+/* ------------------------------------------------------------ */
+/*                         VINES                                */
+/* ------------------------------------------------------------ */
+
+.vine-container {
+    position: absolute;
+    top: var(--header-height, 200px);  
+    width: 50%;                      
+    min-height: 800px;                 
+    pointer-events: none;
+    z-index: 0;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top center;
+    opacity: 1;
+   
+    animation: vine-sway 6s ease-in-out infinite alternate;
+}
+
+/* IZQUIERDA */
+.left-vine {
+    left: -300px;
+    background-image: url('/img/vines1.png');
+}
+
+
+
+/* DERECHA */
+.right-vine {
+    right: -300px;
+    background-image: url('/img/vines1.png');
+    transform: scaleX(-1);
+    
+}
+
+@keyframes vine-sway {
+    0% { transform: translateX(0px) rotateZ(0deg); }
+    100% { transform: translateX(2px) rotateZ(-0.4deg); }
+}
+
+
+.falling-leaf {
+    position: fixed;
+    width: 26px;
+    height: 26px;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.7;
+    animation: leaf-float linear forwards;
+    top: 200px;
+}
+
+@keyframes leaf-float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(200px) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+
 
 
 
