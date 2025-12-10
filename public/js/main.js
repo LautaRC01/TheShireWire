@@ -79,6 +79,7 @@ if (postsContainer) {
 }
 
 
+
 //DELETE CONFIRM MODAL//
 
 function customConfirm() {
@@ -103,6 +104,8 @@ function customConfirm() {
 }
 
 
+
+
 //THEME SWITCHER//
 
 
@@ -110,13 +113,13 @@ const toggleBtn = document.getElementById("theme-toggle");
 const icon = toggleBtn.querySelector(".theme-icon");
 const html = document.documentElement; // importante, NO body
 
-// Aplicar modo guardado previamente
+// APLICAR MODO GUARDADO PREVIAMENTE//
 const savedTheme = localStorage.getItem("themeMode");
 if (savedTheme === "dark") {
     html.classList.add("darkMode");
     icon.textContent = "☀️";
 }
-
+//TOGGLE BUTTON//
 toggleBtn.addEventListener("click", () => {
     html.classList.toggle("darkMode");
 
@@ -126,6 +129,7 @@ toggleBtn.addEventListener("click", () => {
 
     localStorage.setItem("themeMode", isDark ? "dark" : "light");
 });
+
 
 
 
@@ -182,7 +186,8 @@ function createLeaf() {
 
 
 
-
+    const elvenDividerTop = document.getElementsByClassName("elven-divider-top");
+    
 
 
 

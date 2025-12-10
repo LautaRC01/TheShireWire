@@ -136,6 +136,9 @@ html, body {
     overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge moderno */
+}
 /* ------------------------------------------------------------ */
 /*                     DELETE BUTTON (POST)                     */
 /* ------------------------------------------------------------ */
@@ -660,7 +663,7 @@ html, body {
 
 .elven-divider-top {
     
-    position: fixed;     
+    position: absolute;     
     top: 190px;
     clear: both;            
     z-index: 1;  
@@ -672,6 +675,10 @@ html, body {
     background-size: 250px auto;
     margin: 20px auto 20px auto;
     opacity: 0.85;
+}
+
+.posts-body .elven-divider-top{
+    display: none;
 }
 
 .elven-divider-bottom {
@@ -775,11 +782,20 @@ html.darkMode .elven-divider-bottom {
     }
 }
 
-body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge moderno */
+
+/*HOME PAGE VINES AND QUOTE*/
+
+
+.door-1.vine-container.left-vine {
+    background-image: url("/img/door1.png");
+    left: -220px;
 }
 
-
+.quote1 {
+    position: absolute;
+    top: 350px;
+    left: 230px;
+}
 
 
 
