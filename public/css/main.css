@@ -349,7 +349,7 @@ body::-webkit-scrollbar {
     position: relative;
 }
 
-.shire-modal::before {
+/*.shire-modal::before {
     content: "";
     position: absolute;
     top: -14px;
@@ -375,7 +375,7 @@ body::-webkit-scrollbar {
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0.55;
-}
+}*/
 
 .shire-modal-title {
     font-size: 22px;
@@ -565,6 +565,15 @@ body::-webkit-scrollbar {
 /* ------------------------------------------------------------ */
 /*                          POSTS                               */
 /* ------------------------------------------------------------ */
+
+.no-posts {
+    text-align: center;
+    padding: 40px 0;
+    color: #777;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
 
 .posts-container {
     width: 90%;
@@ -797,5 +806,122 @@ html.darkMode .elven-divider-bottom {
     left: 230px;
 }
 
+
+/* ------------------------------------------------------------ */
+/*                          MEDIA Q                             */
+/* ------------------------------------------------------------ */
+
+
+
+/* NOTEBOOKS Y MEDIUM SCREENS */
+@media (max-width: 1550px) {
+    .left-vine, .right-vine {
+        width: 50vw;
+        max-width: 500px;
+    }
+    
+
+    .left-vine { left: -8vw; }
+    .right-vine { right: -8vw; }
+    
+    
+    .door-1.vine-container.left-vine {
+        width: 30vw;
+        max-width: 500px;
+        left: 20px;
+        position: relative;
+        top: 2%;
+        
+    }
+
+    .quote1 {
+        position: absolute;
+        top: 18%;     /* depende del alto de la door: ajustalo */
+        left: 80%;    /* depende del ancho de la puerta */
+        transform: translate(-50%, -50%); /* centra mejor si querés */
+        width: 80%;   /* opcional: se adapta a la escala */
+    }
+
+}
+
+/* NOTEBOOKS Y MEDIUM SCREENS INTERMEDIA*/
+
+@media (max-width: 1245px) {
+    .left-vine, .right-vine {
+        width: 50vw;
+        max-width: 500px;
+    }
+    
+
+    .left-vine { left: -8vw; }
+    .right-vine { right: -8vw; }
+    
+    
+    .door-1.vine-container.left-vine {
+        width: 30vw;
+        max-width: 500px;
+        left: 20px;
+        position: relative;
+        top: 2%;
+        
+    }
+
+    .quote1 {
+        position: absolute;
+        top: 15%;     /* depende del alto de la door: ajustalo */
+        left: 75%;    /* depende del ancho de la puerta */
+        transform: translate(-50%, -50%); /* centra mejor si querés */
+        width: 80%;   /* opcional: se adapta a la escala */
+        font-size: 20px;
+    }
+
+}
+
+
+/* TABLETS */
+@media (max-width: 1000px) {
+    .left-vine, .right-vine {
+        width: 30vw;
+        max-width: 300px;
+    }
+
+    .left-vine { left: -5vw; }
+    .right-vine { right: -5vw; }
+
+
+    .door-1.vine-container.left-vine {
+        width: 30vw;
+        max-width: 500px;
+        left: 20px;
+        position: relative;
+        top: 2%;
+        
+    }
+
+    .quote1 {
+        position: absolute;
+        top: 10%;     /* depende del alto de la door: ajustalo */
+        left: 75%;    /* depende del ancho de la puerta */
+        transform: translate(-50%, -50%); /* centra mejor si querés */
+        width: 80%;   /* opcional: se adapta a la escala */
+        font-size: 15px;
+    }
+}
+
+/* CELULARES */
+@media (max-width: 600px) {
+    .left-vine, .right-vine {
+        display: none;
+    }
+
+    .door-1.vine-container.left-vine {
+        display: none;
+        
+    }
+
+    .quote1 {
+        display: none;
+    }
+}
 
 

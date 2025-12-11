@@ -135,10 +135,11 @@ toggleBtn.addEventListener("click", () => {
 
 //VINES&PARTICLES//
 
+if (window.innerWidth >= 1000) {
 setInterval(() => {
     if (Math.random() < 0.6) createLeaf();  // probabilidad moderada
-}, 2000); // cada 3s revisa si lanza o no una hoja
-
+}, 2000); // cada 2s revisa si lanza o no una hoja
+}
 
 const leafImages = [
     "/img/particle-leaf1.png",
@@ -148,6 +149,7 @@ const leafImages = [
 ];
 
 function createLeaf() {
+    if (window.innerWidth < 1000) return;
     const leaf = document.createElement("img");
     leaf.src = leafImages[Math.floor(Math.random() * leafImages.length)];
     leaf.classList.add("falling-leaf");
