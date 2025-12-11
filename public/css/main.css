@@ -808,6 +808,58 @@ html.darkMode .elven-divider-bottom {
 
 
 /* ------------------------------------------------------------ */
+/*                        HOME QUOTE                            */
+/* ------------------------------------------------------------ */
+
+
+
+.home-quote {
+    position: absolute;
+    top: 35vh;
+    left: 83%;
+    transform: translateX(-50%);
+    width: 70%;
+    max-width: 800px;
+
+    font-family: "Georgia", serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+
+    color: #3a2c0f; /* tono cálido tipo manuscrito */
+    text-shadow: 0 0 6px rgba(255, 245, 220, 0.6);
+
+    padding: 15px 20px;
+    
+}
+
+/* DARK MODE */
+.darkMode .home-quote {
+    color: #f0e6c8;
+    text-shadow: 0 0 10px rgba(0,0,0,0.4);
+    
+}
+
+/* RESPONSIVO */
+@media (max-width: 1100px) {
+    .home-quote {
+        font-size: 1.3rem;
+        width: 85%;
+    }
+}
+
+@media (max-width: 700px) {
+    .home-quote {
+        top: 40vh;
+        font-size: 1.1rem;
+        width: 90%;
+    }
+}
+
+
+
+/* ------------------------------------------------------------ */
 /*                          MEDIA Q                             */
 /* ------------------------------------------------------------ */
 

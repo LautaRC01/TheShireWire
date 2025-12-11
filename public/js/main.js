@@ -157,12 +157,12 @@ function createLeaf() {
     // tamaño aleatorio
     const size = Math.random() * 12 + 20; // entre 20 y 32px
     leaf.style.width = size + "px";
-
+    const rightVine = document.getElementsByClassName("right-vine").length > 0; //Esto es para que no aparezcan particulas si no hay right-vine
     // Aparecen SOLO en los costados
     if (Math.random() < 0.5) {
     // Lado izquierdo (ajustá 0–10vw a gusto)
     leaf.style.left = (Math.random() * 20) + "vw";
-    } else {
+    } else if (rightVine){
     // Lado derecho (ajustá 90–100vw a gusto)
     leaf.style.left = (80 + Math.random() * 10) + "vw";
     }
