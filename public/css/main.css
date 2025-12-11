@@ -815,14 +815,14 @@ html.darkMode .elven-divider-bottom {
 
 .home-quote {
     position: absolute;
-    top: 35vh;
+    top: 37vh;
     left: 83%;
     transform: translateX(-50%);
     width: 70%;
     max-width: 800px;
 
-    font-family: "Georgia", serif;
-    font-size: 1.5rem;
+    
+    font-size: 1.2rem;
     font-weight: 400;
     line-height: 1.5;
     text-align: center;

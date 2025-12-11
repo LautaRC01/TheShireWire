@@ -111,15 +111,14 @@ function customConfirm() {
 
 const toggleBtn = document.getElementById("theme-toggle");
 const icon = toggleBtn.querySelector(".theme-icon");
-const html = document.documentElement; // importante, NO body
+const html = document.documentElement; 
 
-// APLICAR MODO GUARDADO PREVIAMENTE//
 const savedTheme = localStorage.getItem("themeMode");
 if (savedTheme === "dark") {
     html.classList.add("darkMode");
     icon.textContent = "☀️";
 }
-//TOGGLE BUTTON//
+
 toggleBtn.addEventListener("click", () => {
     html.classList.toggle("darkMode");
 
@@ -137,8 +136,8 @@ toggleBtn.addEventListener("click", () => {
 
 if (window.innerWidth >= 1000) {
 setInterval(() => {
-    if (Math.random() < 0.6) createLeaf();  // probabilidad moderada
-}, 2000); // cada 2s revisa si lanza o no una hoja
+    if (Math.random() < 0.6) createLeaf();  
+}, 2000); 
 }
 
 const leafImages = [
@@ -154,28 +153,26 @@ function createLeaf() {
     leaf.src = leafImages[Math.floor(Math.random() * leafImages.length)];
     leaf.classList.add("falling-leaf");
 
-    // tamaño aleatorio
-    const size = Math.random() * 12 + 20; // entre 20 y 32px
+    
+    const size = Math.random() * 12 + 20;
     leaf.style.width = size + "px";
-    const rightVine = document.getElementsByClassName("right-vine").length > 0; //Esto es para que no aparezcan particulas si no hay right-vine
-    // Aparecen SOLO en los costados
+    const rightVine = document.getElementsByClassName("right-vine").length > 0; 
+    
     if (Math.random() < 0.5) {
-    // Lado izquierdo (ajustá 0–10vw a gusto)
+    
     leaf.style.left = (Math.random() * 20) + "vw";
     } else if (rightVine){
-    // Lado derecho (ajustá 90–100vw a gusto)
+    
     leaf.style.left = (80 + Math.random() * 10) + "vw";
     }
 
-    // altura inicial (ACA AJUSTÁS para que NO salgan desde el header)
+    
     leaf.style.top = (200 + Math.random() * 100) + "px";
 
-    // rotación inicial custom property
     const rot = Math.floor(Math.random() * 360) + "deg";
     leaf.style.setProperty("--rot-start", rot);
 
-    // duración de la caída
-    const duration = Math.random() * 6 + 8; // 8–14s
+    const duration = Math.random() * 6 + 8; 
     leaf.style.animationDuration = duration + "s";
 
     document.body.appendChild(leaf);
@@ -183,13 +180,9 @@ function createLeaf() {
     setTimeout(() => leaf.remove(), duration * 1000);
     }
 
-    // INTERVALO DE PARTICULAS.. AJUSTAR A GUSTO
-    setInterval(createLeaf, 800 + Math.random() * 1600);
+setInterval(createLeaf, 800 + Math.random() * 1600);
 
 
-
-    const elvenDividerTop = document.getElementsByClassName("elven-divider-top");
-    
 
 
 
