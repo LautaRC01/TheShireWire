@@ -120,6 +120,8 @@ if (savedTheme === "dark") {
 }
 
 toggleBtn.addEventListener("click", () => {
+    console.log("click detected")
+
     html.classList.toggle("darkMode");
 
     const isDark = html.classList.contains("darkMode");

@@ -39,7 +39,9 @@ app.get('/posts', (req, res) => {
     res.render('posts.ejs', { title: 'All Posts', posts });
 });
 
-
+app.get('/about', (req, res) => {
+    res.render('about.ejs')
+});
 
 
 // Endpoint DELETE para borrar un post por id
