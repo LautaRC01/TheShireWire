@@ -23,26 +23,21 @@ const overlay  = document.getElementById("modalOverlay");
 const closeBtn = document.getElementById("closeModalBtn");
 const modal = document.getElementById("modal");
 
-if (!openBtn || !overlay || !closeBtn) return;
-
-    
+if (openBtn && overlay && closeBtn) {
   openBtn.addEventListener("click", () => {
-      overlay.classList.remove("hidden");
+    overlay.classList.remove("hidden");
   });
 
-    
   closeBtn.addEventListener("click", () => {
-      overlay.classList.add("hidden");
-   });
+    overlay.classList.add("hidden");
+  });
 
-  // Cerrar al clickear fuera
   overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) {
-          overlay.classList.add("hidden");
-      }
+    if (e.target === overlay) {
+      overlay.classList.add("hidden");
     }
-);
-
+  });
+}
 
 
 //DELETE FUNCTION//   

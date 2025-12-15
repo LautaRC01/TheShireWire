@@ -670,7 +670,7 @@ body::-webkit-scrollbar {
 /* ------------------------------------------------------------ */
 
 
-.elven-divider-top {
+/*.elven-divider-top {
     
     position: absolute;     
     top: 190px;
@@ -716,7 +716,7 @@ html.darkMode .elven-divider-top {
 
 html.darkMode .elven-divider-bottom {
     background-image: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' width='300' height='28' viewBox='0 0 300 28' fill='none'>\<path d='M0 14 H110' stroke='%23c8b27a' stroke-width='2'/>\<path d='M190 14 H300' stroke='%23c8b27a' stroke-width='2'/>\<path d='M150 2 C138 10 138 18 150 26 C162 18 162 10 150 2 Z' stroke='%23c8b27a' stroke-width='2' fill='none'/>\<path d='M150 6 C144 11 144 17 150 22 C156 17 156 11 150 6 Z' stroke='%23c8b27a' stroke-width='1.5' fill='none'/>\</svg>");
-}
+}*/
 
 
 
@@ -806,8 +806,8 @@ html.darkMode .elven-divider-bottom {
 
 .quote1 {
     position: absolute;
-    top: 350px;
-    left: 230px;
+    top: 150px;
+    left: 430px;
 }
 
 
@@ -845,21 +845,7 @@ html.darkMode .elven-divider-bottom {
     
 }
 
-/* RESPONSIVO */
-@media (max-width: 1100px) {
-    .home-quote {
-        font-size: 1.3rem;
-        width: 85%;
-    }
-}
 
-@media (max-width: 700px) {
-    .home-quote {
-        top: 40vh;
-        font-size: 1.1rem;
-        width: 90%;
-    }
-}
 
 
 /* ------------------------------------------------------------ */
@@ -870,7 +856,7 @@ html.darkMode .elven-divider-bottom {
 /* CONTENEDOR CENTRAL */
 .about-container {
     max-width: 1100px;
-    margin: 80px auto;
+    margin: 30px auto;
     padding: 20px;
     animation: fadeIn 1.8s ease;
 }
@@ -917,6 +903,15 @@ html.darkMode .elven-divider-bottom {
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     animation: gentleFloat 6s ease-in-out infinite;
+}
+
+.about-tree.vine-container.left-vine {
+    background-image: url("/img/tree1.png");
+    
+}
+.something-in-rightside.vine-container.right-vine {
+    background-image: url("/img/estatua1.png");
+
 }
 
 /* ANIMACIÓN SUAVE DE FLOTE */
@@ -1047,7 +1042,16 @@ html.darkMode .elven-divider-bottom {
         width: 80%;   /* opcional: se adapta a la escala */
         font-size: 15px;
     }
+
+    .home-quote {
+        font-size: 1rem;          
+        width: 85%;
+           
+    }
+
 }
+
+
 
 /* CELULARES */
 @media (max-width: 600px) {
@@ -1062,6 +1066,12 @@ html.darkMode .elven-divider-bottom {
 
     .quote1 {
         display: none;
+    }
+
+    .home-quote{
+        top: 40vh;
+        font-size: 0.8rem;
+        width: 90%;
     }
 }
 
