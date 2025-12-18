@@ -43,6 +43,15 @@ app.get('/about', (req, res) => {
     res.render('about.ejs')
 });
 
+app.get('/login', (req,res) => {
+    res.render('login.ejs')
+})
+
+app.get('/register', (req,res) => {
+    res.render('register.ejs')
+})
+
+
 
 // Endpoint DELETE para borrar un post por id
 app.delete('/posts/:id', (req, res) => {
@@ -62,6 +71,24 @@ app.delete('/posts/:id', (req, res) => {
   return res.status(200).json({ success: true });
 });
 
+
+//EDIT POST
+
+app.put('/posts/:id', (req, res) => {
+  const id = Number(req.params.id);
+  const { title, author, content } = req.body;
+
+  const post = posts.find(p => p.id === id);
+  if (!post) {
+    return res.status(404).json({ error: 'Post no encontrado' });
+  }
+
+  post.title = title;
+  post.author = author;
+  post.content = content;
+
+  res.json({ success: true });
+});
 
 
 

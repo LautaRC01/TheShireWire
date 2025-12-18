@@ -16,6 +16,7 @@ const modalOverlay = document.getElementById("modalOverlay");
 
 
 
+
 //NEW POST MODAL//
 
 const openBtn = document.getElementById("openModalBtn");
@@ -40,16 +41,40 @@ if (openBtn && overlay && closeBtn) {
 }
 
 
-//DELETE FUNCTION//   
+//EDIT-DELETE FUNCTIONS//   
 
 
 if (postsContainer) {
   postsContainer.addEventListener("click", async (e) => {
+
     console.log("Click en postsContainer detectado");
-    const btn = e.target.closest(".deleteButton");
-    if (!btn) return;
-    console.log("Botón delete encontrado:", btn);
-    const postId = btn.dataset.id;
+
+    /* ---------------- EDIT ---------------- */
+
+    const editBtn = e.target.closest(".editButton");
+    if (editBtn) {
+      console.log("Botón EDIT encontrado");
+
+      const postId = editBtn.dataset.id;
+      const postEl = document.getElementById(`post-${postId}`);
+
+      title.value = postEl.querySelector(".postTitle").textContent;
+      author.value = postEl.querySelector(".author b").textContent;
+      content.value = postEl.querySelector(".content").textContent;
+
+      editingPostId = postId;
+      overlay.classList.remove("hidden");
+      return;
+    }
+
+    /* ---------------- DELETE ---------------- */
+
+    const deleteBtn = e.target.closest(".deleteButton");
+    if (!deleteBtn) return;
+
+    console.log("Botón DELETE encontrado:", deleteBtn);
+
+    const postId = deleteBtn.dataset.id;
     console.log("El ID del post a borrar es:", postId);
 
     const ok = await customConfirm();
@@ -66,6 +91,7 @@ if (postsContainer) {
 
       const postElement = document.getElementById(`post-${postId}`);
       if (postElement) postElement.remove();
+
     } catch (err) {
       console.error("Fetch error:", err);
       alert("No se pudo conectar con el servidor.");
@@ -98,6 +124,44 @@ function customConfirm() {
   });
 }
 
+
+//EDIT FUNCTION//
+
+let editingPostId = null;
+
+//change submit form
+const form = document.querySelector(".modal-form");
+
+form.addEventListener("submit", async (e) => {
+    if (!editingPostId) return; // create normal
+
+    e.preventDefault();
+
+    const data = {
+        title: title.value,
+        author: author.value,
+        content: content.value
+    };
+
+    const res = await fetch(`/posts/${editingPostId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+
+    if (!res.ok) {
+        alert("Error editing post");
+        return;
+    }
+
+    location.reload(); // simple y efectivo
+});
+
+//reset al cerrar form
+closeBtn.addEventListener("click", () => {
+    editingPostId = null;
+    form.reset();
+});
 
 
 

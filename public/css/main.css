@@ -433,8 +433,38 @@ body::-webkit-scrollbar {
     to   { opacity: 1; transform: scale(1); }
 }
 
+
 /* ------------------------------------------------------------ */
-/*                           HEADER                              */
+/*                        EDIT BUTTON                           */
+/* ------------------------------------------------------------ */
+
+.editButton {
+    position: absolute;
+    top: 10px;
+    right: 60px;
+
+    background: var(--clr-accent);
+    color: var(--clr-text-light);
+    border: none;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+
+    font-family: MorrisRomanBlack;
+    box-shadow: 0 4px 15px var(--clr-shadow);
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.editButton:hover {
+    background: var(--clr-accent-hover);
+    transform: scale(1.05);
+}
+
+
+
+/* ------------------------------------------------------------ */
+/*                           HEADER                             */
 /* ------------------------------------------------------------ */
 
 .shire-header {
@@ -909,15 +939,6 @@ html.darkMode .elven-divider-bottom {
     animation: gentleFloat 6s ease-in-out infinite;
 }
 
-.about-tree.vine-container.left-vine {
-    background-image: url("/img/tree1.png");
-    
-}
-.something-in-rightside.vine-container.right-vine {
-    background-image: url("/img/estatua1.png");
-
-}
-
 /* ANIMACIÓN SUAVE DE FLOTE */
 @keyframes gentleFloat {
     0% { transform: translateY(0px); }
@@ -1022,7 +1043,17 @@ html.darkMode .elven-divider-bottom {
 }
 
 
+/* ------------------------------------------------------------ */
+/*                   LOGIN AND REGISTER                         */
+/* ------------------------------------------------------------ */
 
+.login-body {
+    text-align: center;
+}
+
+.register-body {
+    text-align: center;
+}
 
 /* ------------------------------------------------------------ */
 /*                          MEDIA Q                             */

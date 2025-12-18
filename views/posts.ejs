@@ -48,6 +48,7 @@
             <h2 class="postTitle"><%= post.title %></h2>
             <p class="author"><em>by <b><%= post.author %></b></em></p>
             <p class="content">"<%= post.content %>"</p>
+            <button class="editButton" data-id="<%= post.id %>">Edit</button>
             <button class="deleteButton" data-id="<%= post.id %>">Delete</button>
             <hr class="postsHr">
         </div>
