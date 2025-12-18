@@ -897,6 +897,10 @@ html.darkMode .elven-divider-bottom {
     text-shadow: 0px 0px 6px rgba(0,0,0,0.3);
 }
 
+.about-text {
+    z-index: 2;
+}
+
 /* IMAGEN */
 .about-image img {
     width: 100%;
@@ -944,6 +948,83 @@ html.darkMode .elven-divider-bottom {
 
 
 /* ------------------------------------------------------------ */
+/*                       AUTH BUTTONS                           */
+/* ------------------------------------------------------------ */
+
+.shire-header {
+    position: relative; /* ancla para posicionamiento absoluto */
+}
+
+.auth-actions {
+    position: absolute;
+    left: 20px;
+    top: 20%;
+    transform: translateY(-50%);
+
+    display: flex;
+    gap: 12px;
+}
+
+/* BOTONES */
+
+.auth-btn {
+    font-family: MorrisRomanBlack;
+    font-size: 16px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.15s ease;
+
+    box-shadow: 0 3px 10px var(--clr-shadow);
+}
+
+/* LOG IN */
+
+.login-btn {
+    background: var(--clr-bg-light);
+    color: var(--clr-text);
+    border: 1px solid var(--clr-border-soft);
+}
+
+.login-btn:hover {
+    background: var(--clr-bg);
+    transform: translateY(-1px);
+}
+
+/* CREATE ACCOUNT */
+
+.register-btn {
+    background: var(--clr-accent);
+    color: var(--clr-btn-text);
+    border: none;
+}
+
+.register-btn:hover {
+    background: var(--clr-accent-hover);
+    transform: translateY(-1px);
+}
+
+/* DARK MODE */
+
+.darkMode .login-btn {
+    background: var(--clr-bg);
+    color: var(--clr-text);
+}
+
+.darkMode .login-btn:hover {
+    background: var(--clr-bg-light);
+}
+
+
+
+
+/* ------------------------------------------------------------ */
 /*                          MEDIA Q                             */
 /* ------------------------------------------------------------ */
 
@@ -978,6 +1059,16 @@ html.darkMode .elven-divider-bottom {
         width: 80%;   /* opcional: se adapta a la escala */
     }
 
+    .about-tree.vine-container.left-vine{
+        width:46vw;
+        z-index: 0;
+        top: 25vh;
+    }
+    .something-in-rightside.vine-container.right-vine{
+        width: 45vw;
+        z-index: 0;
+    }
+
 }
 
 /* NOTEBOOKS Y MEDIUM SCREENS INTERMEDIA*/
@@ -1009,6 +1100,13 @@ html.darkMode .elven-divider-bottom {
         transform: translate(-50%, -50%); /* centra mejor si querés */
         width: 80%;   /* opcional: se adapta a la escala */
         font-size: 20px;
+    }
+
+    .about-tree.vine-container.left-vine{
+        display: none;
+    }
+    .something-in-rightside.vine-container.right-vine{
+        display: none;
     }
 
 }
@@ -1049,6 +1147,13 @@ html.darkMode .elven-divider-bottom {
            
     }
 
+    .about-tree.vine-container.left-vine{
+        display: none;
+    }
+    .something-in-rightside.vine-container.right-vine{
+        display: none;
+    }
+
 }
 
 
@@ -1072,6 +1177,13 @@ html.darkMode .elven-divider-bottom {
         top: 40vh;
         font-size: 0.8rem;
         width: 90%;
+    }
+
+    .about-tree.vine-container.left-vine{
+        display: none;
+    }
+    .something-in-rightside.vine-container.right-vine{
+        display: none;
     }
 }
 
