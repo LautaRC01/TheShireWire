@@ -132,8 +132,9 @@ let editingPostId = null;
 //change submit form
 const form = document.querySelector(".modal-form");
 
+if (form) {
 form.addEventListener("submit", async (e) => {
-    if (!editingPostId) return; // create normal
+    if (!editingPostId) return; 
 
     e.preventDefault();
 
@@ -154,15 +155,17 @@ form.addEventListener("submit", async (e) => {
         return;
     }
 
-    location.reload(); // simple y efectivo
+    location.reload(); 
 });
+}
 
 //reset al cerrar form
+if (closeBtn && form){
 closeBtn.addEventListener("click", () => {
     editingPostId = null;
     form.reset();
 });
-
+}
 
 
 //THEME SWITCHER//

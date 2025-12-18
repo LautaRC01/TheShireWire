@@ -939,6 +939,15 @@ html.darkMode .elven-divider-bottom {
     animation: gentleFloat 6s ease-in-out infinite;
 }
 
+.about-tree.vine-container.left-vine {
+    background-image: url("/img/tree1.png");
+    
+}
+.something-in-rightside.vine-container.right-vine {
+    background-image: url("/img/estatua1.png");
+
+}
+
 /* ANIMACIÓN SUAVE DE FLOTE */
 @keyframes gentleFloat {
     0% { transform: translateY(0px); }
