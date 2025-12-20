@@ -59,7 +59,7 @@ if (postsContainer) {
       const postEl = document.getElementById(`post-${postId}`);
 
       title.value = postEl.querySelector(".postTitle").textContent;
-      author.value = postEl.querySelector(".author b").textContent;
+      author.value = postEl.querySelector(".author b").textContent;    //".author b" ???
       content.value = postEl.querySelector(".content").textContent;
 
       editingPostId = postId;
